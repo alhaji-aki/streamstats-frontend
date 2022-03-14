@@ -1,6 +1,8 @@
 <template>
     <div class="card list-item">
-        <h5 class="card-header">{{ title }}</h5>
+        <div class="card-header">
+            <slot name="title"></slot>
+        </div>
         <ul class="list-group list-group-flush border-bottom scrollarea">
             <SingleGame />
             <SingleGame />
