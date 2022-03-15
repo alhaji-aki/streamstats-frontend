@@ -37,9 +37,10 @@
 
 <script>
 import SingleGame from "@/components/SingleGame.vue"
+import gameSetup from "@/mixins/gameSetup"
 
 export default {
-    props: ['title'],
+    mixins: [gameSetup],
     components: {
         SingleGame
     }

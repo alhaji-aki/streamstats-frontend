@@ -3,7 +3,7 @@
     <div class="container-fluid mb-5">
       <div class="row g-3 mb-5">
         <div class="col-md-6 col-xxl-4">
-          <Games>
+          <Games endpoint="/top-followed-streams">
             <template #title>
               <h5 class="mb-0">Top Followed Streams</h5>
             </template>
