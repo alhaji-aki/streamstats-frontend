@@ -57,6 +57,9 @@ export default {
       const userData = JSON.parse(userInfo);
       this.setAuthData(userData, token);
     }
+
+    // TODO: use token to fetch user data to confirm it is still valid
+
     axios.interceptors.response.use(response => response, error => {
       if (error.response.status === 401) {
         console.log("error", 401);
