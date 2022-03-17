@@ -14,7 +14,7 @@
                 <tbody v-if="games.length > 0">
                     <tr v-for="game in games" :key="game.name">
                         <td>{{ game.name }}</td>
-                        <td>{{ game.views }}</td>
+                        <td>{{ game.streams_count }}</td>
                     </tr>
                 </tbody>
                 <tbody v-else>
