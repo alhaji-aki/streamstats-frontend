@@ -25,11 +25,12 @@ export default {
                 .get('/stats/median-views')
                 .then((res) => {
                     this.count = res.data.data.value;
+                    this.loading = false
                 })
                 .catch((error) => {
                     console.log(error);
-                })
-                .finally((this.loading = false));
+                    this.loading = false
+                });
         },
     },
     mounted() {

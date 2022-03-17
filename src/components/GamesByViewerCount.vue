@@ -44,11 +44,12 @@ export default {
                 .get('/stats/top-games-by-views')
                 .then((res) => {
                     this.games = res.data.data;
+                    this.loading = false
                 })
                 .catch((error) => {
                     console.log(error);
-                })
-                .finally((this.loading = false));
+                    this.loading = false
+                });
         },
     },
     created() {

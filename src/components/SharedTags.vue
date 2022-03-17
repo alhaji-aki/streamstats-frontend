@@ -31,11 +31,12 @@ export default {
                 .get('/stats/tags')
                 .then((res) => {
                     this.tags = res.data.data
+                    this.loading = false
                 })
                 .catch((error) => {
                     console.log(error);
-                })
-                .finally((this.loading = false));
+                    this.loading = false
+                });
         },
     },
     created() {

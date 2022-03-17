@@ -41,11 +41,12 @@ export default {
                 .then((res) => {
                     this.stream = res.data.data.stream
                     this.count = res.data.data.streams_needed;
+                    this.loading = false
                 })
                 .catch((error) => {
                     console.log(error);
-                })
-                .finally((this.loading = false));
+                    this.loading = false
+                });
         },
     },
     mounted() {

@@ -32,11 +32,12 @@ export default {
                 .get("/stats/top-streams-user-follows")
                 .then((res) => {
                     this.streams = res.data.data;
+                    this.loading = false
                 })
                 .catch((error) => {
                     console.log(error);
-                })
-                .finally((this.loading = false));
+                    this.loading = false
+                });
         },
     },
     created() {

@@ -28,11 +28,12 @@ export default {
                     chart.data.labels = res.data.data.labels
                     chart.data.datasets = res.data.data.datasets
                     chart.update()
+                    this.loading = false
                 })
                 .catch((error) => {
                     console.log(error);
-                })
-                .finally((this.loading = false));
+                    this.loading = false
+                });
         },
     },
     mounted() {

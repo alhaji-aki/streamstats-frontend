@@ -53,11 +53,11 @@ export default {
                 .get(`/stats/top-streams?direction=${this.direction}`)
                 .then((res) => {
                     this.streams = res.data.data;
+                    this.loading = false
+                    this.disableSelect = false
                 })
                 .catch((error) => {
                     console.log(error);
-                })
-                .finally(() => {
                     this.loading = false
                     this.disableSelect = false
                 });
