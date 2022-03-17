@@ -3,18 +3,20 @@
         <div class="card-header">
             <h5 class="mb-0">Top Followed Streams</h5>
         </div>
-        <div v-if="!loading && streams.length > 0">
-            <ul class="list-group list-group-flush border-bottom scrollarea">
-                <SingleGame v-for="stream in streams" :stream="stream" :key="stream.id" />
-            </ul>
-        </div>
+        <ul
+            v-if="!loading && streams.length > 0"
+            class="list-group list-group-flush border-bottom scrollarea"
+        >
+            <SingleStream v-for="stream in streams" :stream="stream" :key="stream.id" />
+        </ul>
+        <p v-else-if="loading">Loading</p>
         <p v-else>No data to display</p>
     </div>
 </template>
 
 <script>
 import axios from "@/axios";
-import SingleGame from "./SingleGame.vue";
+import SingleStream from "./SingleStream.vue";
 
 export default {
     data() {
@@ -40,13 +42,13 @@ export default {
     created() {
         this.loadData();
     },
-    components: { SingleGame }
+    components: { SingleStream }
 }
 </script>
 
 <style scoped>
 .list-item {
-    max-height: 80vh;
+    max-height: 465px;
 }
 
 .scrollarea {

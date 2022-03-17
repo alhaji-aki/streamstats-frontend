@@ -4,21 +4,26 @@
             <h5>Top Games By Viewer Count</h5>
         </div>
         <div class="card-body">
-            <p v-if="loading">Loading</p>
-            <table v-else class="table table-striped table-sm">
+            <table v-if="!loading" class="table table-striped table-sm">
                 <thead>
                     <tr>
                         <th scope="col">Game</th>
                         <th scope="col">Views</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody v-if="games.length > 0">
                     <tr v-for="game in games" :key="game.name">
                         <td>{{ game.name }}</td>
                         <td>{{ game.views }}</td>
                     </tr>
                 </tbody>
+                <tbody v-else>
+                    <tr>
+                        <td colspan="2">No data to display</td>
+                    </tr>
+                </tbody>
             </table>
+            <p v-else>Loading</p>
         </div>
     </div>
 </template>
