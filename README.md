@@ -1,6 +1,10 @@
 # Streamstats Frontend
 
-Streamstats is an application that shows a user top streams on Twitch and compares the streams they are following to the top streams.
+Streamstats is an application that shows a user top streams on Twitch and compares the streams they are following to the top streams. This is the frontend of the streamstats application.
+
+## Backend
+
+Follow this link to get the backend of the streamstats application: <https://github.com/alhaji-aki/streamstats>
 
 ## Project Setup
 
