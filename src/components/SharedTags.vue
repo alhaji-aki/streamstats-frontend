@@ -6,7 +6,7 @@
                 v-for="( tag, index ) in tags"
                 :class="{ 'ms-2': index > 0 }"
                 :tag="tag"
-                :key="tag.id"
+                :key="tag.tag_id"
             />
         </div>
     </div>
