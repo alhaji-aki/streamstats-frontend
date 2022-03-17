@@ -7,6 +7,7 @@
       >Welcome to the Stream Stats App... Where you can find all some awesome statistics about the streams you follow and the top 1000 streams on Twitch.</p>
 
       <div
+        v-if="$route.query.error"
         class="alert alert-danger d-flex align-items-center alert-dismissible fade show mb-3"
         role="alert"
       >
