@@ -15,24 +15,19 @@ export default {
     data() {
         return {
             chartData: [],
-            chart: null
         }
     },
     methods: {
         async loadData(chart) {
-            this.loading = true;
-
             await axios
                 .get('/stats/streams-by-start-time')
                 .then((res) => {
                     chart.data.labels = res.data.data.labels
                     chart.data.datasets = res.data.data.datasets
                     chart.update()
-                    this.loading = false
                 })
                 .catch((error) => {
                     console.log(error);
-                    this.loading = false
                 });
         },
     },

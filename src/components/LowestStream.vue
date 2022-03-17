@@ -1,11 +1,27 @@
 <template>
     <div class="card">
+        <div class="card-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h5 class="mb-0">Lowest Stream views needed to get to Top Streams</h5>
+                </div>
+                <div class="col-auto text-center pe-card">
+                    <button
+                        class="btn btn-secondary"
+                        :disabled="loading"
+                        type="button"
+                        @click="refresh"
+                    >Refresh</button>
+                </div>
+            </div>
+        </div>
         <div class="card-body">
-            <h5
-                class="text-muted fw-normal mt-0"
-                title="Views Needed"
-            >Views Needed for Lowest Stream to get to Top Streams</h5>
-            <h3 class="mt-3 mb-3">{{ displayCount }}</h3>
+            <p
+                v-if="!loading && fetching_followed_streams"
+            >We currently getting your followed streams from twitch. click the refresh button on this card to try again.</p>
+            <p v-else-if="!loading && stream && !stream.exists">You have no followed streams.</p>
+            <h3 v-else-if="!loading && stream && stream.exists" class="mt-3 mb-3">{{ displayCount }}</h3>
+            <p v-else>Loading...</p>
         </div>
     </div>
 </template>
@@ -19,6 +35,7 @@ export default {
             stream: null,
             count: 0,
             loading: false,
+            fetching_followed_streams: false,
         };
     },
     computed: {
@@ -33,12 +50,16 @@ export default {
         }
     },
     methods: {
+        refresh() {
+            this.loadData()
+        },
         async loadData() {
             this.loading = true;
 
             await axios
                 .get('/stats/lowest-followed-stream')
                 .then((res) => {
+                    this.fetching_followed_streams = !!res.data.data.fetching_followed_streams
                     this.stream = res.data.data.stream
                     this.count = res.data.data.streams_needed;
                     this.loading = false
